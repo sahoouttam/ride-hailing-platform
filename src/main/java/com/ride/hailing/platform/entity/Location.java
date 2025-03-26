@@ -19,7 +19,10 @@ public class Location extends BaseEntity {
 
     @Column(name = "address")
     private String address;
-    
+
+    @Enumerated(EnumType.STRING)
+    private AddressType addressType;
+
     @Column(name = "latitude")
     private double latitude;
 

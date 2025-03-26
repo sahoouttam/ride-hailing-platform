@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateLocationRequest {
-    
-    private String address;
-    private String addressType;
-    private double latitude;
-    private double longitude;
+public class RegisterUserRequest {
+
+    private String name;
+    private String email;
+    private String password;
+    private String phoneNumber;
+    private CreateLocationRequest createLocationRequest;
 }

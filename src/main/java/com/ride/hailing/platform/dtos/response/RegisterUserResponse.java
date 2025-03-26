@@ -1,4 +1,4 @@
-package com.ride.hailing.platform.dtos.request;
+package com.ride.hailing.platform.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateLocationRequest {
+public class RegisterUserResponse {
     
+    private String name;
+    private String email;
+    private String phoneNumber;
     private String address;
-    private String addressType;
-    private double latitude;
-    private double longitude;
 }

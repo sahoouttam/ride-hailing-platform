@@ -1,5 +1,7 @@
 package com.ride.hailing.platform.service;
 
+import com.ride.hailing.platform.entity.AddressType;
+import com.ride.hailing.platform.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,17 @@ public class LocationService {
                         .latitude(createLocationRequest.getLatitude())
                         .longitude(createLocationRequest.getLongitude())
                         .build();
+        return locationRepository.save(location);
+    }
+
+    public Location createLocation(CreateLocationRequest createLocationRequest, User user) {
+        Location location = Location.builder()
+                .address(createLocationRequest.getAddress())
+                .addressType(AddressType.valueOf(createLocationRequest.getAddressType()))
+                .latitude(createLocationRequest.getLatitude())
+                .longitude(createLocationRequest.getLongitude())
+                .user(user)
+                .build();
         return locationRepository.save(location);
     }
 }
