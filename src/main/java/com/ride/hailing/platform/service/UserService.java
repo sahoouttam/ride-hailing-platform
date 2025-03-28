@@ -6,6 +6,7 @@ import com.ride.hailing.platform.entity.Location;
 import com.ride.hailing.platform.entity.User;
 import com.ride.hailing.platform.exception.EmailAlreadyExistsException;
 import com.ride.hailing.platform.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,11 @@ public class UserService {
                 registeredUser.getEmail(),
                 registeredUser.getPhoneNumber(),
                 createdLocation.getAddress());
+    }
+
+    public User findUser(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "User with id " + userId + " not found"));
     }
 }

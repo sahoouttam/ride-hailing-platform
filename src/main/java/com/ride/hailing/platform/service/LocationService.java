@@ -2,6 +2,7 @@ package com.ride.hailing.platform.service;
 
 import com.ride.hailing.platform.entity.AddressType;
 import com.ride.hailing.platform.entity.User;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,11 @@ public class LocationService {
                 .user(user)
                 .build();
         return locationRepository.save(location);
+    }
+
+    public Location findLocation(Long locationId) {
+        return locationRepository.findById(locationId)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "location with id " + locationId + " not found"));
     }
 }
